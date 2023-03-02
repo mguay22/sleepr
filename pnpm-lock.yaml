@@ -18,6 +18,7 @@ specifiers:
   '@types/express': ^4.17.13
   '@types/jest': 28.1.8
   '@types/node': ^16.0.0
+  '@types/nodemailer': ^6.4.7
   '@types/passport-jwt': ^3.0.8
   '@types/passport-local': ^1.0.35
   '@types/supertest': ^2.0.11
@@ -36,6 +37,7 @@ specifiers:
   mongodb: 4.13.0
   mongoose: ^6.7.2
   nestjs-pino: ^3.1.1
+  nodemailer: ^6.9.1
   passport: ^0.6.0
   passport-jwt: ^4.0.1
   passport-local: ^1.0.0
@@ -73,6 +75,7 @@ dependencies:
   mongodb: 4.13.0
   mongoose: 6.7.2
   nestjs-pino: 3.1.1_0e2a5fa7eee42314df3da60472a0a0bc
+  nodemailer: 6.9.1
   passport: 0.6.0
   passport-jwt: 4.0.1
   passport-local: 1.0.0
@@ -92,6 +95,7 @@ devDependencies:
   '@types/express': 4.17.14
   '@types/jest': 28.1.8
   '@types/node': 16.18.3
+  '@types/nodemailer': 6.4.7
   '@types/passport-jwt': 3.0.8
   '@types/passport-local': 1.0.35
   '@types/supertest': 2.0.12
@@ -2181,6 +2185,12 @@ packages:
 
   /@types/node/16.18.3:
     resolution: {integrity: sha512-jh6m0QUhIRcZpNv7Z/rpN+ZWXOicUUQbSoWks7Htkbb9IjFQj4kzcX/xFCkjstCj5flMsN8FiSvt+q+Tcs4Llg==}
+
+  /@types/nodemailer/6.4.7:
+    resolution: {integrity: sha512-f5qCBGAn/f0qtRcd4SEn88c8Fp3Swct1731X4ryPKqS61/A3LmmzN8zaEz7hneJvpjFbUUgY7lru/B/7ODTazg==}
+    dependencies:
+      '@types/node': 16.18.3
+    dev: true
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -5070,6 +5080,11 @@ packages:
   /node-releases/2.0.6:
     resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
     dev: true
+
+  /nodemailer/6.9.1:
+    resolution: {integrity: sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==}
+    engines: {node: '>=6.0.0'}
+    dev: false
 
   /normalize-path/3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
