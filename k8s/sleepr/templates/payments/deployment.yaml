@@ -17,3 +17,17 @@ spec:
       containers:
         - image: us-east4-docker.pkg.dev/sleepr-378423/payments/production
           name: payments
+          env:
+            - name: PORT
+              value: '3001'
+            - name: NOTIFICATIONS_HOST
+              value: notifications
+            - name: NOTIFICATIONS_PORT
+              value: '3000'
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe
+                  key: apiKey
+          ports:
+            - containerPort: 3001

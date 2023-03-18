@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: payments
+  name: payments
+spec:
+  ports:
+    - name: 'tcp'
+      port: 3001
+      protocol: TCP
+      targetPort: 3001
+  selector:
+    app: payments
+  type: ClusterIP

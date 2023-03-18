@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: auth
+  name: auth-http
+spec:
+  ports:
+    - name: 'http'
+      port: 3003
+      protocol: TCP
+      targetPort: 3003
+  selector:
+    app: auth
+  type: NodePort
