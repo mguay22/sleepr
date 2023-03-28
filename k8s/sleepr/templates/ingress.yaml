@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sleepr
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /reservations/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: reservations
+                port:
+                  number: 3004
+          - path: /auth/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: auth-http
+                port:
+                  number: 3003
