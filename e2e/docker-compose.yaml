@@ -24,10 +24,14 @@ services:
       - '3001:3001'
   payments:
     image: us-east4-docker.pkg.dev/sleepr-378423/payments/production
+    ports:
+      - '3003:3003'
     env_file:
       - ../apps/payments/.env
   notifications:
     image: us-east4-docker.pkg.dev/sleepr-378423/notifications/production
+    ports:
+      - '3004:3004'
     env_file:
       - ../apps/notifications/.env
   mongo:
