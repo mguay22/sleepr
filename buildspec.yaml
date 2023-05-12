@@ -21,11 +21,11 @@ phases:
 
       - docker build -t notifications -f ./apps/notifications/Dockerfile .
       - docker tag notifications:latest 084898106549.dkr.ecr.us-east-1.amazonaws.com/notifications:latest
-post_build:
-  commands:
-    - echo Build completed on `date`
-    - echo Pushing the Docker images...
-    - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/reservations:latest
-    - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/auth:latest
-    - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/payments:latest
-    - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/notifications:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/reservations:latest
+      - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/auth:latest
+      - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/payments:latest
+      - docker push 084898106549.dkr.ecr.us-east-1.amazonaws.com/notifications:latest
