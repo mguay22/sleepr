@@ -43,5 +43,9 @@ services:
       - ./apps/notifications/.env
     volumes:
       - .:/usr/src/app
-  mongo:
-    image: mongo
+  mysql:
+    image: mysql
+    env_file:
+      - .env
+    ports:
+      - '3306:3306'
