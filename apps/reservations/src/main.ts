@@ -12,7 +12,6 @@ async function bootstrap() {
   app.useLogger(app.get(Logger));
   app.use(cookieParser());
   const configService = app.get(ConfigService);
-  app.setGlobalPrefix('/reservations');
   await app.listen(configService.get('PORT'));
 }
 bootstrap();
