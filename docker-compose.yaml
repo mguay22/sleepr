@@ -43,5 +43,17 @@ services:
       - ./apps/notifications/.env
     volumes:
       - .:/usr/src/app
+  gateway:
+    build:
+      context: .
+      dockerfile: ./apps/gateway/Dockerfile
+      target: development
+    command: pnpm run start:dev gateway
+    env_file:
+      - ./apps/gateway/.env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '3004:3004'
   mongo:
     image: mongo
