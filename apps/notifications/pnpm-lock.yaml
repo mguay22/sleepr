@@ -1,28 +1,32 @@
-lockfileVersion: 5.3
+lockfileVersion: '6.0'
 
-specifiers:
-  '@types/nodemailer': ^6.4.7
-  nodemailer: ^6.9.1
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
-  nodemailer: 6.9.1
+  nodemailer:
+    specifier: ^6.9.1
+    version: 6.9.1
 
 devDependencies:
-  '@types/nodemailer': 6.4.7
+  '@types/nodemailer':
+    specifier: ^6.4.7
+    version: 6.4.7
 
 packages:
 
-  /@types/node/18.15.0:
+  /@types/node@18.15.0:
     resolution: {integrity: sha512-z6nr0TTEOBGkzLGmbypWOGnpSpSIBorEhC4L+4HeQ2iezKCi4f77kyslRwvHeNitymGQ+oFyIWGP96l/DPSV9w==}
     dev: true
 
-  /@types/nodemailer/6.4.7:
+  /@types/nodemailer@6.4.7:
     resolution: {integrity: sha512-f5qCBGAn/f0qtRcd4SEn88c8Fp3Swct1731X4ryPKqS61/A3LmmzN8zaEz7hneJvpjFbUUgY7lru/B/7ODTazg==}
     dependencies:
       '@types/node': 18.15.0
     dev: true
 
-  /nodemailer/6.9.1:
+  /nodemailer@6.9.1:
     resolution: {integrity: sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==}
     engines: {node: '>=6.0.0'}
     dev: false
