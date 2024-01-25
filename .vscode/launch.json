@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Debug Node.js Docker",
+            "address": "localhost",
+            "port": 9229,
+            "sourceMaps": true,
+            "restart": true,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/usr/src/app"
+        }
+    ]
+}
