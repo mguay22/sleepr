@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: ./apps/reservations/Dockerfile
       target: development
-    command: sh -c "pnpm prisma migrate deploy --schema apps/reservations/prisma/schema.prisma && pnpm prisma generate --schema apps/reservations/prisma/schema.prisma && pnpm run start:dev reservations"
+    command: sh -c "cd apps/reservations && pnpm prisma migrate deploy && pnpm prisma generate && cd ../.. && pnpm run start:dev reservations"
     depends_on:
       - postgres
     env_file:
@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: ./apps/auth/Dockerfile
       target: development
-    command: sh -c "pnpm prisma migrate deploy --schema apps/auth/prisma/schema.prisma && pnpm prisma generate --schema apps/auth/prisma/schema.prisma && pnpm run start:dev auth"
+    command: sh -c "cd apps/auth && pnpm prisma migrate deploy && pnpm prisma generate && cd ../.. && pnpm run start:dev auth"
     depends_on:
       - postgres
     env_file:

@@ -4,20 +4,19 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
 COPY tsconfig.json tsconfig.json
 COPY nest-cli.json nest-cli.json
-COPY apps/reservations/prisma ./prisma
+COPY apps/reservations/package.json apps/reservations/package.json
 
 RUN npm install -g pnpm
 
 RUN pnpm install
 
-RUN pnpm prisma generate
-
 COPY apps/reservations apps/reservations
 COPY libs libs
 
-RUN pnpm run build reservations
+RUN pnpm -w run build reservations
 
 FROM node:alpine as production
 
@@ -28,11 +27,15 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
+COPY apps/reservations/package.json apps/reservations/package.json
 
 RUN npm install -g pnpm
 
 RUN pnpm install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
+COPY --from=development /usr/src/app/apps/reservations/prisma.config.ts ./apps/reservations/prisma.config.ts
+COPY --from=development /usr/src/app/apps/reservations/prisma ./apps/reservations/prisma
 
-CMD ["pnpm", "run", "start:prod", "dist/apps/reservations/main"]
+CMD ["sh", "-c", "cd apps/reservations && pnpm prisma migrate deploy && cd ../.. && node dist/apps/reservations/main"]

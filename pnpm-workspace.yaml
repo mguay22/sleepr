@@ -1,0 +1,8 @@
+packages:
+  - 'apps/*'
+onlyBuiltDependencies:
+  - '@nestjs/core'
+  - '@prisma/engines'
+  - nestjs-pino
+  - prisma
+  - unrs-resolver

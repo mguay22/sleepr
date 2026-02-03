@@ -4,22 +4,19 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
 COPY tsconfig.json tsconfig.json
 COPY nest-cli.json nest-cli.json
-COPY apps/auth/prisma ./prisma
+COPY apps/auth/package.json apps/auth/package.json
 
 RUN npm install -g pnpm
 
 RUN pnpm install
 
-RUN pnpm prisma generate
-
 COPY apps/auth apps/auth
 COPY libs libs
 
-RUN cd apps/auth && pnpm install
-
-RUN pnpm run build auth
+RUN pnpm -w run build auth
 
 FROM node:alpine as production
 
@@ -30,11 +27,15 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
+COPY apps/auth/package.json apps/auth/package.json
 
 RUN npm install -g pnpm
 
 RUN pnpm install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
+COPY --from=development /usr/src/app/apps/auth/prisma.config.ts ./apps/auth/prisma.config.ts
+COPY --from=development /usr/src/app/apps/auth/prisma ./apps/auth/prisma
 
-CMD ["pnpm", "run", "start:prod", "dist/apps/auth/main"]
+CMD ["sh", "-c", "cd apps/auth && pnpm prisma migrate deploy && cd ../.. && node dist/apps/auth/main"]

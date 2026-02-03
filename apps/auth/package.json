@@ -13,19 +13,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@nestjs/jwt": "^10.0.1",
-    "@nestjs/passport": "^9.0.0",
-    "@prisma/client": "^5.12.1",
-    "bcryptjs": "^2.4.3",
-    "passport": "^0.6.0",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/passport": "^11.0.5",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^16.5.0",
+    "pg": "^8.16.0",
+    "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "prisma": "^5.12.1"
+    "prisma": "^7.3.0"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.2",
-    "@types/passport-jwt": "^3.0.8",
-    "@types/passport-local": "^1.0.35",
-    "dotenv-cli": "^7.4.1"
+    "@types/bcryptjs": "^3.0.0",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/passport-local": "^1.0.38",
+    "dotenv-cli": "^11.0.0"
   }
 }
