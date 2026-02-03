@@ -4,8 +4,10 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
 COPY tsconfig.json tsconfig.json
 COPY nest-cli.json nest-cli.json
+COPY apps/payments/package.json apps/payments/package.json
 
 RUN npm install -g pnpm
 
@@ -13,8 +15,6 @@ RUN pnpm install
 
 COPY apps/payments apps/payments
 COPY libs libs
-
-RUN cd apps/payments && pnpm install
 
 RUN pnpm run build payments
 
@@ -27,6 +27,8 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
+COPY apps/payments/package.json apps/payments/package.json
 
 RUN npm install -g pnpm
 
