@@ -18,16 +18,32 @@ spec:
         - image: us-east4-docker.pkg.dev/sleepr-378423/payments/production
           name: payments
           env:
-            - name: PORT
+            - name: TCP_PORT
               value: '3001'
+            - name: HTTP_PORT
+              value: '3000'
             - name: NOTIFICATIONS_HOST
               value: notifications
             - name: NOTIFICATIONS_PORT
               value: '3000'
+            - name: RESERVATIONS_HOST
+              value: reservations-tcp
+            - name: RESERVATIONS_PORT
+              value: '3005'
             - name: STRIPE_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: stripe
                   key: apiKey
+            - name: STRIPE_WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: stripe
+                  key: webhookSecret
+            - name: STRIPE_SUCCESS_URL
+              value: 'https://sleepr.example.com/checkout/success?session_id={CHECKOUT_SESSION_ID}'
+            - name: STRIPE_CANCEL_URL
+              value: 'https://sleepr.example.com/checkout/cancel'
           ports:
             - containerPort: 3001
+            - containerPort: 3000

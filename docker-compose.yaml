@@ -31,6 +31,10 @@ services:
     command: pnpm run start:dev payments
     env_file:
       - ./apps/payments/.env
+    ports:
+      # webhook endpoint - forward Stripe events here with:
+      # stripe listen --forward-to localhost:3005/webhooks/stripe
+      - '3005:3005'
     volumes:
       - .:/usr/src/app
   notifications:
