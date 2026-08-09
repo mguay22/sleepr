@@ -1,19 +1,23 @@
 import { Type } from 'class-transformer';
 import {
-  IsDefined,
   IsNotEmptyObject,
   IsNumber,
+  IsOptional,
+  IsPositive,
   ValidateNested,
 } from 'class-validator';
 import { CardDto } from './card.dto';
 
 export class CreateChargeDto {
-  @IsDefined()
+  // Optional: provide a card to charge it directly (legacy flow).
+  // Omit it to pay via a Stripe Checkout Session instead.
+  @IsOptional()
   @IsNotEmptyObject()
   @ValidateNested()
   @Type(() => CardDto)
-  card: CardDto;
+  card?: CardDto;
 
-  @IsNumber()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @IsPositive()
   amount: number;
 }

@@ -20,3 +20,10 @@ spec:
                 name: auth-http
                 port:
                   number: 3003
+          - path: /webhooks/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: payments-http
+                port:
+                  number: 3000
